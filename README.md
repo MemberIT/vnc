@@ -2,7 +2,10 @@
 
 Module is going to manage the vnc server 
 
-## Please NOTE: You have to pass the plaintext password for "vncpassword"
+It will install vncserver and fluxbox , and also will google-chrome 
+
+**NOTE** : You have to pass the plaintext password for "vncpassword"
+
 check the below usage
 
 #Install and configure vnc server
@@ -15,7 +18,7 @@ class { 'vnc':
 }
 ```
 
-##Tested OS : CentOS 7 and Ubuntu 14
+**Tested OS** : CentOS 7 and Ubuntu 14
 
 ##NOTE:
 if you have any error on package installation , please reboot the server 
