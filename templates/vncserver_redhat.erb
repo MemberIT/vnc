@@ -1,0 +1,44 @@
+#!/bin/sh -e
+#managed by puppet , don't make any changes here
+
+PATH="$PATH:/usr/X11R6/bin/"
+
+# The Username:Group that will run VNC
+export USER="<%= @vncusername %>"
+
+#${RUNAS}
+# The display that VNC will use
+DISPLAY=`ps -ef | grep -i xvnc | cut -d":" -f 5 | cut -d " " -f 1`
+DEFAULT_DISPLAY="1"
+
+#Running service
+DISPLAY_RUNNING=`ps -ef | grep -i xvnc | cut -d":" -f 5 | cut -d " " -f 1 | wc -l`
+
+# Color depth (between 8 and 32)
+DEPTH="16"
+
+# The Desktop geometry to use.
+#GEOMETRY="<WIDTH>x<HEIGHT>"
+GEOMETRY="1024x768"
+
+# The name that the VNC Desktop will have.
+NAME="my-vnc-server"
+OPTIONS="-name ${NAME} -depth ${DEPTH} -geometry ${GEOMETRY} :${DEFAULT_DISPLAY}"
+
+. /lib/lsb/init-functions
+
+case "$1" in
+  start)
+     if [[ ${DISPLAY_RUNNING} == "1" ]] || [[ ${DISPLAY_RUNNING} != "2" ]]      
+       then
+          su ${USER} -c "/usr/bin/vncserver ${OPTIONS}"
+     fi
+     ;;
+
+  stop)
+     for i in $DISPLAY ; do su ${USER} -c "/usr/bin/vncserver -kill :$i" ; done ;;
+
+  restart)
+    $0 stop
+    $0 start ;;
+esac
