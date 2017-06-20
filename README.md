@@ -20,10 +20,12 @@ class { 'vnc':
 
 **Tested OS** : CentOS 7 and Ubuntu 14
 
-if you have any *error* while package installation , please reboot the server 
-and try again , it may be issue with package updates
+if you have any ```error``` while package installation , please reboot the server  and try again.
+it may be issue with package updates and 
+Also in CentOS it has an issue with startup script, so if you get any error related to service start, 
+just reboot server for the first time only not everytime :)
+ 
 
-and also in CentOS it has an issue with startup script , so if you get any error related to
-service start, just reboot server for the first time only not everytime.
+** still module is under testing ** 
 
 
