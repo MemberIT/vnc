@@ -2,7 +2,7 @@
 
 Module is going to manage the vnc server 
 
-It will install vncserver and fluxbox , and also will google-chrome 
+It will install vncserver fluxbox , and also google-chrome 
 
 **NOTE** : You have to pass the plaintext password for "vncpassword"
 
