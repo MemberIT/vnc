@@ -77,21 +77,21 @@ class vnc::config (
         case $::operatingsystem {
            /^(Debian|Ubuntu)$/: {
              file { "menu file":
-               name           => "/home/${username}/.fluxbox/menu",
-               ensure         => present,
-               source	      => "puppet:///modules/vnc/menu",
-               owner          => $username,
-               group          => $username,
+               name           =>  "/home/${username}/.fluxbox/menu",
+               ensure         =>  present,
+               content        =>  template('vnc/menu.erb'),
+               owner          =>  $username,
+               group          =>  $username,
              }
            }
            'CentOS',
            'RedHat': {
               file { "menu file":
-                name           => "/home/${username}/.fluxbox/menu",
-                ensure         => present,
-                source         => "puppet:///modules/vnc/menu_rpm",
-                owner          => $username,
-                group          => $username,
+                name           =>  "/home/${username}/.fluxbox/menu",
+                ensure         =>  present,
+                content        =>  template('vnc/menu_rpm.erb'),
+                owner          =>  $username,
+                group          =>  $username,
               }
            }
         }     
