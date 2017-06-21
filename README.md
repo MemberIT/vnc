@@ -41,7 +41,7 @@ To change default browser to firefox , just change the following param
      vnc::browser2: firefox     #for centos
 ```
 
-Module is successfully tested on Ubuntu 14 and CentOS7.
+Module is successfully tested on Ubuntu14-64b and CentOS7-64b.
 
 **NOTE**: You can not use multiple vncdisplay.
 
