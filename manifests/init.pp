@@ -41,12 +41,13 @@ class vnc (
    $userpassword   =  '!!',
    $vncpassword    =  '!!',
    $vncport        =  undef,
+   $browser        =  'google-chrome-stable',
 ) {
   validate_string($vncusername)
   validate_re($ensure, '^present$|^absent$')
 
   class { 'vnc::install': } -> class { 'vnc::config': } -> class { 'vnc::service': }
 
-$vncusers = hiera('vnc::user', {})
-create_resources('vnc::user', $vncusers)
+$vncusers = hiera('vnc', {})
+create_resources('vnc', $vncusers)
 }
