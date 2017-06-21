@@ -1,5 +1,6 @@
 class vnc::install (
       $ensure         =  installed,
+      $browser        =  $vnc::browser,
    ){
     
    if $::operatingsystem      == 'Ubuntu' {
@@ -43,7 +44,7 @@ class vnc::install (
           name        => 'epel-release',
           ensure      => installed,
       }->
-      package { 'google-chrome-stable':
+      package { "${browser}" :
           ensure      => "${ensure}",
           provider    => "${provider}",
       }->
