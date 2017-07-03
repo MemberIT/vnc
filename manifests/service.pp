@@ -35,15 +35,13 @@ class vnc::service (
              ensure        =>  'link',
              target        =>  '../init.d/vncserver',
              require       =>  File["startup script"],
-          }
+          }->
           service { 'vncserver startup':
               name          =>  'vncserver',
               ensure        =>  $service_ensure,
               start         =>  "/etc/init.d/vncserver start",
               stop          =>  "/etc/init.d/vncserver stop",
-              restart       =>  "/etc/init.d/vncserver restart",
               hasstatus     =>  false,
-              status        =>  "/etc/init.d/vncserver status",
               pattern       =>  '/etc/init.d/vncserver',
           }
       }

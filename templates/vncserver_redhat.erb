@@ -12,7 +12,7 @@ DISPLAY=`ps -ef | grep -i xvnc | cut -d":" -f 5 | cut -d " " -f 1`
 DEFAULT_DISPLAY="1"
 
 #Running service
-DISPLAY_RUNNING=`ps -ef | grep -i xvnc | cut -d":" -f 5 | cut -d " " -f 1 | wc -l`
+DISPLAY_RUNNING=`ps -ef | grep -i "xvnc :1" | grep "my-vnc-server" | cut -d":" -f 5 | awk '{print $1}'`
 
 # Color depth (between 8 and 32)
 DEPTH="16"
@@ -27,11 +27,11 @@ OPTIONS="-name ${NAME} -depth ${DEPTH} -geometry ${GEOMETRY} :${DEFAULT_DISPLAY}
 
 . /lib/lsb/init-functions
 
-pstatus=`pgrep vnc | wc -l`
+pstatus=`pgrep vnc -l | grep -i "xvnc" | awk '{print $1}'`
 
 case "$1" in
   start)
-     if [[ ${DISPLAY_RUNNING} != "2" ]] || [[ ${DISPLAY_RUNNING} == "1" ]]      
+     if [[ ${DISPLAY_RUNNING} != "1" ]]
        then
           su ${USER} -c "/usr/bin/vncserver ${OPTIONS}"
      fi
@@ -41,7 +41,7 @@ case "$1" in
      for i in $DISPLAY ; do su ${USER} -c "/usr/bin/vncserver -kill :$i" ; done ;;
 
   status)
-     if [[ ${pstatus} -gt $? ]]
+     if [[ ${pstatus} -gt "0" ]]
        then
          echo "vnc server is running"
      else
