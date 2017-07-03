@@ -7,7 +7,7 @@ class vnc::install (
       $provider       =  apt
       $apps           =  [ 'fluxbox', 'expect','vnc4server','xfce4' ]
 
-      apt::source { 'google-chorome':
+      apt::source { 'google-chrome':
          location     => '[arch=amd64] http://dl.google.com/linux/chrome/deb/',
          release      => 'stable',
          repos        => 'main',
@@ -16,7 +16,7 @@ class vnc::install (
              id       => '4CCA1EAF950CEE4AB83976DCA040830F7FAC5991',
          },
          include => {
-               src    => flase,
+               src    => false,
          },
       }-> 
       Class['apt::update'] -> 

@@ -27,9 +27,11 @@ OPTIONS="-name ${NAME} -depth ${DEPTH} -geometry ${GEOMETRY} :${DEFAULT_DISPLAY}
 
 . /lib/lsb/init-functions
 
+pstatus=`pgrep vnc | wc -l`
+
 case "$1" in
   start)
-     if [[ ${DISPLAY_RUNNING} == "1" ]] || [[ ${DISPLAY_RUNNING} != "2" ]]      
+     if [[ ${DISPLAY_RUNNING} != "2" ]] || [[ ${DISPLAY_RUNNING} == "1" ]]      
        then
           su ${USER} -c "/usr/bin/vncserver ${OPTIONS}"
      fi
@@ -38,7 +40,18 @@ case "$1" in
   stop)
      for i in $DISPLAY ; do su ${USER} -c "/usr/bin/vncserver -kill :$i" ; done ;;
 
+  status)
+     if [[ ${pstatus} -gt $? ]]
+       then
+         echo "vnc server is running"
+     else
+         echo "vnc server is stopped"
+     fi ;;
+
   restart)
     $0 stop
     $0 start ;;
+  *)
+    echo "Usage: $0 {start|stop|restart|status}" ;;
+
 esac
