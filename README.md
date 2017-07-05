@@ -26,6 +26,7 @@ also configure of user and fluxbox and create boot startup script to start on ru
     vnc::vncpassword:   'password'
     vnc::vncport:       '5901'
 ```
+
 you can pass hash to the **userpassword** param using this command "$openssl passwd -1" to generate md5 hash.
 
 **NOTE**: You have to pass the plaintext password for **vncpassword** param.
@@ -36,7 +37,7 @@ To change default browser to firefox , just change the following param
      #usage in manifest
      browser1    =>  firefox    #for ubuntu
      browser2    =>  firefox    #for centos
-
+```
 ``` 
      #usage in hiera
      vnc::browser1: firefox 	#for ubuntu
