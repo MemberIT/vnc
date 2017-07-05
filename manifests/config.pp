@@ -49,7 +49,7 @@ class vnc::config (
              file { "xstartup file":
                 ensure         =>  present,
                 mode           =>  0755,
-                source         =>  'puppet:///modules/vnc/xstartup',
+                content        =>  template('vnc/xstartup.erb'),
                 path           =>  "/home/${username}/.vnc/xstartup",
                 owner          =>  $username,
                 group          =>  $username,
@@ -60,7 +60,7 @@ class vnc::config (
               file { "xstartup file":
                 ensure         =>  present,
                 mode           =>  0755,
-                source         =>  'puppet:///modules/vnc/xstartup_rpm',
+                content        =>  template('vnc/xstartup_rpm.erb'),
                 path           =>  "/home/${username}/.vnc/xstartup",
                 owner          =>  $username,
                 group          =>  $username,

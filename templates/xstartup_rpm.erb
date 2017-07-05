@@ -12,6 +12,6 @@ vncconfig -display :1 -set BlacklistTimeout=0 -set BlacklistThreshold=1000000
 xterm -geometry 80x24+10+10 -ls -title "$VNCDESKTOP Desktop" &
 #twm &
 
-google-chrome &
+<%= @browser2 %> &
 fluxbox 
 

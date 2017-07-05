@@ -1,6 +1,7 @@
 class vnc::install (
       $ensure         =  installed,
-      $browser        =  $vnc::browser,
+      $browser1       =  $vnc::browser1,          #ubuntu default browser chrome
+      $browser2       =  $vnc::browser2,          #centos browser default chrome
    ){
     
    if $::operatingsystem      == 'Ubuntu' {
@@ -20,7 +21,7 @@ class vnc::install (
          },
       }-> 
       Class['apt::update'] -> 
-      package { 'google-chrome-stable':
+      package { "${browser2}":
          ensure      => "${ensure}",
          provider    => "${provider}",
       }->
@@ -32,7 +33,7 @@ class vnc::install (
 
    if $::operatingsystem == 'CentOS' {
       $provider       =  yum
-      $apps           =  [ 'tigervnc-server','xorg-x11-xinit','fluxbox','xterm','xarchiver','expect' ]
+      $apps           =  [ 'tigervnc-server','xorg-x11-xinit','fluxbox','xterm','xarchiver','expect', 'liberation-sans-fonts']
 
       yumrepo { "google chrome repo":
           name        =>  'google-chrome',
@@ -44,7 +45,7 @@ class vnc::install (
           name        => 'epel-release',
           ensure      => installed,
       }->
-      package { "${browser}" :
+      package { "${browser2}" :
           ensure      => "${ensure}",
           provider    => "${provider}",
       }->
