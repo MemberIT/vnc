@@ -12,7 +12,7 @@ also configure of user and fluxbox and create boot startup script to start on ru
   ```puppet 
       class { 'vnc': 
         vncusername       => 'vncuser',
-        userpassword      => '$1$qCmU0a$a9Q6W/fDzU6zQI42/Z2sE0',
+        userpassword      => '$1$qCmU0a$a9Q6W/fDzU6zQI42/Z2s',
         vncpassword       => 'password',
         vncport           =>  5900,
      }
@@ -22,7 +22,7 @@ also configure of user and fluxbox and create boot startup script to start on ru
 ```
  -'vnc'
     vnc::vncusername:   'test1'
-    vnc::userpassword:  'leo$123'
+    vnc::userpassword:  '$1$qCmU0a$a9Q6W/fDzU6zQI42/Z2s'
     vnc::vncpassword:   'password'
     vnc::vncport:       '5901'
 ```
