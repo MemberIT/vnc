@@ -1,7 +1,7 @@
 class vnc::install (
       $ensure         =  installed,
       $browser1       =  $vnc::browser1,          #ubuntu default browser chrome
-      $browser2       =  $vnc::browser2,          #centos browser default chrome
+      $browser2       =  $vnc::browser2,          #centos default browser chrome
    ){
     
    if $::operatingsystem      == 'Ubuntu' {
@@ -21,7 +21,7 @@ class vnc::install (
          },
       }-> 
       Class['apt::update'] -> 
-      package { "${browser2}":
+      package { "${browser1}":
          ensure      => "${ensure}",
          provider    => "${provider}",
       }->

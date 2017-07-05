@@ -1,7 +1,7 @@
 class vnc::config (
     $username         =  $vnc::vncusername,
     $ensure           =  $vnc::ensure,
-    $userpassword     =  $vnc::userpassword,                 #pass password as hash
+    $userpassword     =  $vnc::userpassword,                #pass password as hash
     $vncpassword      =  $vnc::vncpassword,                 #pass password as string
     $comment          =  "managed by puppet",
     $managehome       =  true,
