@@ -1,8 +1,6 @@
 # VNC module for Puppet
 
-Module is going to manage the vnc server 
-
-Module is successfully tested on Ubuntu 14 and CentOS 7.
+Module is manage the vnc server.
 
 It will install vncserver fluxbox and also google-chrome is the default browser.
 also configure of user and fluxbox and create boot startup script to start on runtime.
@@ -42,6 +40,8 @@ To change default browser to firefox , just change the following param
      vnc::browser1: firefox 	#for ubuntu
      vnc::browser2: firefox     #for centos
 ```
+
+Module is successfully tested on Ubuntu 14 and CentOS7.
 
 **NOTE**: You can not use multiple vncdisplay.
 
