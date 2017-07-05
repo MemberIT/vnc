@@ -32,9 +32,15 @@ you can pass hash to the **userpassword** param using this command "$openssl pas
 **NOTE**: You can not use multiple vncdisplay,
 
 To change default browser to firefox , just change the following param
+```
+     #usage in manifest
+     browser1    =>  firefox    #for ubuntu
+     browser2    =>  firefox    #for centos
+
 ``` 
-     vnc::browser1   => firefox 	#for ubuntu
-     vnc::browser2   => firefox         #for centos
+     #usage in hiera
+     vnc::browser1: firefox 	#for ubuntu
+     vnc::browser2: firefox     #for centos
 ```
 
 **Thank you , Have a great day!**
