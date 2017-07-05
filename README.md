@@ -2,8 +2,8 @@
 
 Module is manage the vnc server.
 
-It will install vncserver fluxbox and also google-chrome is the default browser.
-also configure of user and fluxbox and create boot startup script to start on runtime.
+It will install vncserver, fluxbox and also browser, default browser is "google-chrome",
+and also configure the user and fluxbox and start the vncserver service 
 
 **usage**:
   Install and configure vnc server
@@ -44,6 +44,8 @@ To change default browser to firefox , just change the following param
 Module is successfully tested on Ubuntu 14 and CentOS7.
 
 **NOTE**: You can not use multiple vncdisplay.
+
+**NOTE**: please reboot the server after finished the catalog.
 
 **Thank you , Have a great day!**
 
