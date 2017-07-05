@@ -26,11 +26,10 @@ also configure of user and fluxbox and create boot startup script to start on ru
     vnc::vncpassword:   'password'
     vnc::vncport:       '5901'
 ```
+**NOTE**: You have to pass the plaintext password for **vncpassword** param.
 
 you can pass hash to the **userpassword** param using this command "$openssl passwd -1" to generate md5 hash.
 
-**NOTE**: You have to pass the plaintext password for **vncpassword** param.
-**NOTE**: You can not use multiple vncdisplay,
 
 To change default browser to firefox , just change the following param
 ```
@@ -43,6 +42,8 @@ To change default browser to firefox , just change the following param
      vnc::browser1: firefox 	#for ubuntu
      vnc::browser2: firefox     #for centos
 ```
+
+**NOTE**: You can not use multiple vncdisplay.
 
 **Thank you , Have a great day!**
 
