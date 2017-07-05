@@ -2,30 +2,39 @@
 
 Module is going to manage the vnc server 
 
-It will install vncserver fluxbox , and also google-chrome 
+Module is successfully tested on Ubuntu 14 and CentOS 7.
 
-**NOTE** : You have to pass the plaintext password for "vncpassword"
+It will install vncserver fluxbox and also google-chrome is the default browser.
+also configure of user and fluxbox and create boot startup script to start on runtime.
 
-check the below usage
+**usage**:
+  Install and configure vnc server
+  ```puppet 
+      class { 'vnc': 
+        vncusername       => 'vncuser',
+        userpassword      => '$1$qCmU0a$a9Q6W/fDzU6zQI42/Z2sE0',
+        vncpassword       => 'password',
+        vncport           =>  5900,
+     }
+  ```
 
-#Install and configure vnc server
-```puppet 
-class { 'vnc': 
-     vncusername       => 'vncuser',
-     userpassword      => '$1$qCmU0a$a9Q6W/fDzU6zQI42/Z2sE0',
-     vncpassword       => 'password',
-     vncport           =>  5900,
-}
+**Hiera Usage**:
+```
+ -'vnc'
+    vnc::vncusername:   'test1'
+    vnc::userpassword:  'leo$123'
+    vnc::vncpassword:   'password'
+    vnc::vncport:       '5901'
+```
+you can pass hash to the **userpassword** param using this command "$openssl passwd -1" to generate md5 hash.
+
+**NOTE**: You have to pass the plaintext password for **vncpassword** param.
+**NOTE**: You can not use multiple vncdisplay,
+
+To change default browser to firefox , just change the following param
+```  vnc::browser1   => firefox 	#for ubuntu
+     vnc::browser2   => firefox          #for centos
 ```
 
-**Tested OS** : CentOS 7 and Ubuntu 14
-
-if you have any ```error``` while package installation , please reboot the server  and try again.
-it may be issue with package updates and 
-Also in CentOS it has an issue with startup script, so if you get any error related to service start, 
-just reboot server for the first time only not everytime :)
- 
-
-** still module is under testing ** 
-
+**Thank you , Have a great day!**
 
