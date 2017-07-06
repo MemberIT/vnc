@@ -42,7 +42,7 @@ class vnc (
    $vncpassword    =  '!!',
    $vncport        =  undef,
    $browser1       =  'google-chrome-stable',  #For ubuntu 
-   $browser2       =  'google-chrome',  #For centos
+   $browser2       =  'google-chrome',         #For centos
 ) {
   validate_string($vncusername)
   validate_re($ensure, '^present$|^absent$')
