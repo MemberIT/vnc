@@ -26,7 +26,7 @@ and also configure the user and fluxbox and start the vncserver service
 ```
 **NOTE**: You have to pass the plaintext password for **vncpassword** param.
 
-you can pass hash to the **userpassword** param using this command "$openssl passwd -1" to generate md5 hash.
+you can pass hash to the **userpassword** param, use this command "$openssl passwd -1" to generate md5 hash.
 
 
 To change default browser to firefox , just change the following param
