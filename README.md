@@ -13,7 +13,7 @@ and also configure the user and fluxbox and start the vncserver service
         userpassword      => '$1$qCmU0a$a9Q6W/fDzU6zQI42/Z2s',
         vncpassword       => 'password',
         vncport           =>  5900,
-     }
+      }
   ```
 
 **Hiera Usage**:
