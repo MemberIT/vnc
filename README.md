@@ -25,6 +25,7 @@ and also configure the user and fluxbox and start the vncserver service
     vnc::vncport:       '5901'
 ```
 **NOTE**: You have to pass the plaintext password for **vncpassword** param.
+
 **Recommended** : change the vncserver password manually, instead of passing plaintext to vncpassword.
 ```	 cmd : '$vncpasswd /home/vncuser/.vnc/passwd' ```
 
