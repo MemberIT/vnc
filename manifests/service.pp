@@ -27,7 +27,7 @@ class vnc::service (
       'RedHat' :  {
           file { "startup script":
              ensure        =>  present,
-             mode          =>  0755,
+             mode          =>  '0755',
              path          =>  '/etc/init.d/vncserver',
              content       =>  template('vnc/vncserver_redhat.erb'),
           }->
@@ -48,7 +48,7 @@ class vnc::service (
       /^(Debian|Ubuntu)$/: {
           file { "startup script":
              ensure        =>  present,
-             mode          =>  0755,
+             mode          =>  '0755',
              path          =>  '/etc/init.d/vncserver',
              content       =>  template('vnc/vncserver_debian.erb'),
           }->
