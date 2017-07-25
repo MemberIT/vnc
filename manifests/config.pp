@@ -48,7 +48,7 @@ class vnc::config (
            /^(Debian|Ubuntu)$/: {
              file { "xstartup file":
                 ensure         =>  present,
-                mode           =>  0755,
+                mode           =>  '0755',
                 content        =>  template('vnc/xstartup.erb'),
                 path           =>  "/home/${username}/.vnc/xstartup",
                 owner          =>  $username,
@@ -59,7 +59,7 @@ class vnc::config (
            'RedHat' :  {
               file { "xstartup file":
                 ensure         =>  present,
-                mode           =>  0755,
+                mode           =>  '0755',
                 content        =>  template('vnc/xstartup_rpm.erb'),
                 path           =>  "/home/${username}/.vnc/xstartup",
                 owner          =>  $username,
