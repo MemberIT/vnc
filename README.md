@@ -5,6 +5,8 @@ Module to manage the vnc server.
 It will install vncserver, fluxbox and also browser, default browser is "google-chrome",
 and also configure the user and fluxbox and start the vncserver service 
 
+Puppet Server Version <3.8
+
 **usage**:
   Install and configure vnc server
   ```puppet 
