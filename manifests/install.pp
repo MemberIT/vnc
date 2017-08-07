@@ -2,8 +2,7 @@ class vnc::install (
       $ensure         =  installed,
       $browser1       =  $vnc::browser1,          #ubuntu default browser chrome
       $browser2       =  $vnc::browser2,          #centos default browser chrome
-   ){
-    
+) inherits ::vnc {
    if $::operatingsystem      == 'Ubuntu' {
       $provider       =  apt
       $apps           =  [ 'fluxbox', 'expect','vnc4server','xfce4' ]
@@ -22,12 +21,12 @@ class vnc::install (
       }-> 
       Class['apt::update'] -> 
       package { "${browser1}":
-         ensure      => "${ensure}",
-         provider    => "${provider}",
+         ensure       => "${ensure}",
+         provider     => "${provider}",
       }->
       package { $apps:
-         ensure      => "${ensure}",
-         provider    => "${provider}",
+         ensure       => "${ensure}",
+         provider     => "${provider}",
       }
    }
 
