@@ -2,10 +2,9 @@ class vnc::service (
       $service_ensure      =  running,
       $service_enable      =  true,
       $vncport             =  $vnc::vncport,
-    ){ 
-   
-      validate_string($service_ensure)
-      validate_bool($service_enable)
+) inherits vnc::config { 
+    validate_string($service_ensure)
+    validate_bool($service_enable)
    
     case $::operatingsystem {
       'CentOS',
@@ -37,12 +36,12 @@ class vnc::service (
              require       =>  File["startup script"],
           }->
           service { 'vncserver startup':
-              name          =>  'vncserver',
-              ensure        =>  $service_ensure,
-              start         =>  "/etc/init.d/vncserver start",
-              stop          =>  "/etc/init.d/vncserver stop",
-              status        =>  "/etc/init.d/vncserver status",
-              pattern       =>  '/etc/init.d/vncserver',
+              name         =>  'vncserver',
+              ensure       =>  $service_ensure,
+              start        =>  "/etc/init.d/vncserver start",
+              stop         =>  "/etc/init.d/vncserver stop",
+              status       =>  "/etc/init.d/vncserver status",
+              pattern      =>  '/etc/init.d/vncserver',
           }
       }
       /^(Debian|Ubuntu)$/: {
@@ -53,9 +52,9 @@ class vnc::service (
              content       =>  template('vnc/vncserver_debian.erb'),
           }->
           service { 'vncserver startup':
-             name           =>  'vncserver',
-             ensure         =>  $service_ensure,
-             enable         =>  $service_enable,
+             name          =>  'vncserver',
+             ensure        =>  $service_ensure,
+             enable        =>  $service_enable,
           }
       }
     }
